@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Plus, LayoutDashboard, FileText, BarChart3, Shield, BookOpen, Menu, X, Wallet, Users, Activity, Bell } from "lucide-react";
+import { Plus, LayoutDashboard, FileText, BarChart3, Shield, BookOpen, Menu, X, Wallet, Users, Activity, Bell, Lock, Zap, Award, AlertTriangle, Target, DollarSign } from "lucide-react";
 import { ProposalCard, Proposal } from "./components/ProposalCard";
 import { EthicsFramework } from "./components/EthicsFramework";
 import { GovernanceStats } from "./components/GovernanceStats";
@@ -11,8 +11,14 @@ import { DelegationManager } from "./components/DelegationManager";
 import { TreasuryDashboard } from "./components/TreasuryDashboard";
 import { ActivityFeed } from "./components/ActivityFeed";
 import { NotificationCenter } from "./components/NotificationCenter";
+import { SoulboundReputation } from "./components/SoulboundReputation";
+import { RetroactiveFunding } from "./components/RetroactiveFunding";
+import { ZKPrivacyVoting } from "./components/ZKPrivacyVoting";
+import { OptimisticGovernance } from "./components/OptimisticGovernance";
+import { GovernanceRiskDashboard } from "./components/GovernanceRiskDashboard";
+import { ImpactCertificates } from "./components/ImpactCertificates";
 
-type TabType = "dashboard" | "proposals" | "analytics" | "ethics" | "transparency" | "treasury" | "activity";
+type TabType = "dashboard" | "proposals" | "analytics" | "ethics" | "transparency" | "treasury" | "activity" | "reputation" | "rpgf" | "privacy" | "optimistic" | "risk" | "impact";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>("dashboard");
@@ -174,6 +180,12 @@ export default function App() {
     { id: "transparency" as TabType, label: "Transparency", icon: BookOpen },
     { id: "treasury" as TabType, label: "Treasury", icon: Wallet },
     { id: "activity" as TabType, label: "Activity", icon: Activity },
+    { id: "reputation" as TabType, label: "Reputation", icon: Lock },
+    { id: "rpgf" as TabType, label: "Retroactive Funding", icon: DollarSign },
+    { id: "privacy" as TabType, label: "Privacy Voting", icon: Zap },
+    { id: "optimistic" as TabType, label: "Optimistic Governance", icon: Award },
+    { id: "risk" as TabType, label: "Governance Risk", icon: AlertTriangle },
+    { id: "impact" as TabType, label: "Impact Certificates", icon: Target },
   ];
 
   return (
@@ -394,6 +406,42 @@ export default function App() {
         {activeTab === "activity" && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <ActivityFeed />
+          </motion.div>
+        )}
+
+        {activeTab === "reputation" && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <SoulboundReputation />
+          </motion.div>
+        )}
+
+        {activeTab === "rpgf" && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <RetroactiveFunding />
+          </motion.div>
+        )}
+
+        {activeTab === "privacy" && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <ZKPrivacyVoting />
+          </motion.div>
+        )}
+
+        {activeTab === "optimistic" && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <OptimisticGovernance />
+          </motion.div>
+        )}
+
+        {activeTab === "risk" && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <GovernanceRiskDashboard />
+          </motion.div>
+        )}
+
+        {activeTab === "impact" && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <ImpactCertificates />
           </motion.div>
         )}
       </main>
